@@ -528,7 +528,7 @@
   <section class="hero">
     <div class="hex-pattern" aria-hidden="true"></div>
     <div class="hero-inner">
-      <div class="eyebrow">Maskinværksted · Ribe</div>
+      <div class="eyebrow">Mobil maskinreparatør · Ribe</div>
       <h1>Hydraulik, smedeopgaver &amp; <span class="accent">maskinreparation</span></h1>
       <p class="hero-sub">Fogh Service reparerer landbrugs- og entreprenørmaskiner ude hos dig. Ring, så finder vi ud af, hvad der skal til.</p>
       <div class="hero-ctas">
@@ -734,9 +734,7 @@
           </div>
         </div>
 
-        <form class="contact-form" name="kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-          <input type="hidden" name="form-name" value="kontakt">
-          <p class="hp-field" hidden><label>Udfyld ikke dette felt: <input name="bot-field"></label></p>
+        <form class="contact-form" id="kontaktForm" name="kontakt">
           <h3>SKRIV EN BESKED</h3>
           <div class="field">
             <label for="navn">Navn</label>
@@ -751,7 +749,7 @@
             <textarea id="besked" name="besked" required></textarea>
           </div>
           <button class="btn btn-primary" type="submit" style="width:100%; justify-content:center;">Send besked</button>
-          <p class="form-note">Din besked sendes direkte — ingen mail-app nødvendig.</p>
+          <p class="form-note">Knappen åbner din mail-app med foghservice@gmail.com som modtager.</p>
         </form>
       </div>
     </div>
@@ -774,6 +772,17 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  const kontaktForm = document.getElementById('kontaktForm');
+  kontaktForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const navn = document.getElementById('navn').value.trim();
+    const tlf = document.getElementById('tlf').value.trim();
+    const besked = document.getElementById('besked').value.trim();
+    const subject = `Henvendelse fra ${navn}`;
+    const body = `Navn: ${navn}\nTelefon: ${tlf}\n\n${besked}`;
+    window.location.href = `mailto:foghservice@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
 
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightboxImg');
