@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Fogh Service — Hydraulik, smedeopgaver &amp; maskinreparation, Ribe</title>
+<meta name="description" content="Fogh Service i Ribe reparerer hydraulik, laver smedeopgaver og servicerer landbrugs- og entreprenørmaskiner. Vi kommer også ud til dig. Ring 22 92 09 92.">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Fogh Service">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="images/icon-192.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="images/logo.png">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet"></noscript>
+<style>
+  :root{
+    --navy: #123a58;
+    --navy-deep: #0b2740;
+    --orange: #e35a25;
+    --orange-deep: #c2481b;
+    --steel: #6c757c;
+    --steel-light: #aeb4b8;
+    --concrete: #f1efe9;
+    --concrete-2: #e7e3da;
+    --ink: #1b1e20;
+    --yellow: #f0b429;
+    --radius: 2px;
+
+    /* theme-adaptive tokens */
+    --surface: #ffffff;
+    --border-subtle: #d8d3c8;
+    --border-input: #cfc9ba;
+    --body-copy: #333333;
+    --muted-copy: #43494d;
+    --field-bg: #f1efe9;
+    --footer-copy: #8fa0af;
+    --shadow-soft: 0 1px 2px rgba(20,20,15,0.06);
+    --heading: var(--navy);
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+    *{ animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+  }
+
+  body{
+    margin:0;
+    background: var(--concrete);
+    color: var(--ink);
+    font-family: 'Work Sans', sans-serif;
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  h1,h2,h3{
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin: 0;
+    color: var(--heading);
+  }
+
+  .mono{
+    font-family: 'IBM Plex Mono', monospace;
+    letter-spacing: 0.01em;
+  }
+
+  a{ color: inherit; }
+
+  img{ max-width: 100%; display: block; }
+
+  .wrap{
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Focus visibility */
+  a:focus-visible, button:focus-visible{
+    outline: 3px solid var(--orange);
+    outline-offset: 2px;
+  }
+
+  /* ---------- Bolt/hex pattern (signature motif) ---------- */
+  .hex-pattern{
+    position:absolute; inset:0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='104' viewBox='0 0 90 104'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='0.10' stroke-width='1.6'%3E%3Cpolygon points='45,2 85,25 85,79 45,102 5,79 5,25'/%3E%3Ccircle cx='45' cy='52' r='16'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 150px 173px;
+    pointer-events:none;
+  }
+  .hex-pattern.dark-on-light{
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='104' viewBox='0 0 90 104'%3E%3Cg fill='none' stroke='%23123a58' stroke-opacity='0.06' stroke-width='1.6'%3E%3Cpolygon points='45,2 85,25 85,79 45,102 5,79 5,25'/%3E%3Ccircle cx='45' cy='52' r='16'/%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* ---------- Nav ---------- */
+  header.site{
+    position: sticky; top:0; z-index:50;
+    background: var(--navy-deep);
+    border-bottom: 3px solid var(--orange);
+  }
+  .nav-row{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 12px 24px;
+    max-width: 1180px; margin:0 auto;
+  }
+  .brand{ display:flex; align-items:center; gap:10px; text-decoration:none; padding: 4px 0; }
+  .brand img{ height: 76px; width:auto; }
+  .brand-text{
+    font-family:'Oswald',sans-serif; color:#fff; font-weight:600;
+    font-size: 1.05rem; letter-spacing: 0.03em; text-transform:uppercase;
+    display:none;
+  }
+  nav.links{ display:flex; gap: 28px; }
+  nav.links a{
+    color: #fff; text-decoration:none; font-size:0.95rem;
+    font-weight:500; letter-spacing:0.02em;
+    padding: 4px 2px; border-bottom: 2px solid transparent;
+  }
+  nav.links a:hover{ border-color: var(--orange); }
+  .nav-call{
+    display:flex; align-items:center; gap:8px;
+    background: var(--orange);
+    color:#fff; text-decoration:none;
+    padding: 9px 16px;
+    font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:0.92rem;
+    border-radius: var(--radius);
+    white-space:nowrap;
+  }
+  .nav-call:hover{ background: var(--orange-deep); }
+
+  @media (max-width: 680px){
+    nav.links{ display:none; }
+    .brand-text{ display:none; }
+    .nav-call span.txt{ display:none; }
+    .brand img{ height: 56px; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position: relative;
+    padding: 0;
+    background:
+      radial-gradient(1100px 520px at 82% -10%, rgba(227,90,37,0.16), transparent 60%),
+      linear-gradient(160deg, var(--navy-deep) 0%, var(--navy) 62%, #0e3050 100%);
+    color:#fff;
+    overflow:hidden;
+  }
+  .hero-inner{
+    position:relative; z-index:2;
+    max-width: 1180px; margin:0 auto;
+    padding: 88px 24px 96px;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    color: var(--orange);
+    font-size: 0.85rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    display:flex; align-items:center; gap:10px;
+    margin-bottom: 18px;
+  }
+  .eyebrow::before{
+    content:""; width: 28px; height:2px; background: var(--orange); display:inline-block;
+  }
+  .hero h1{
+    color:#fff;
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    line-height: 1.02;
+    font-weight: 700;
+    max-width: 14ch;
+  }
+  .hero h1 .accent{ color: var(--orange); }
+  .hero-sub{
+    margin-top: 22px;
+    font-size: 1.18rem;
+    max-width: 46ch;
+    color: #dfe6ec;
+  }
+  .hero-ctas{
+    margin-top: 34px;
+    display:flex; gap:16px; flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding: 15px 26px;
+    font-family:'Oswald',sans-serif; font-weight:600; letter-spacing:0.03em;
+    text-transform: uppercase; font-size: 0.98rem;
+    text-decoration:none;
+    border-radius: var(--radius);
+    border: 2px solid transparent;
+    transition: transform 0.12s ease, background 0.15s ease;
+  }
+  .btn:hover{ transform: translateY(-2px); }
+  .btn-primary{ background: var(--orange); color:#fff; }
+  .btn-primary:hover{ background: var(--orange-deep); }
+  .btn-outline{ border-color: rgba(255,255,255,0.55); color:#fff; }
+  .btn-outline:hover{ border-color:#fff; background: rgba(255,255,255,0.08); }
+
+  .hero-strip{
+    position:relative; z-index:2;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    background: rgba(11,39,64,0.55);
+  }
+  .hero-strip .wrap{
+    display:grid; grid-template-columns: repeat(3,1fr);
+    gap: 0;
+  }
+  .hero-strip .item{
+    padding: 20px 22px;
+    border-left: 1px solid rgba(255,255,255,0.14);
+    font-family:'IBM Plex Mono',monospace;
+    font-size: 0.86rem;
+    color: #cdd8e1;
+  }
+  .hero-strip .item:first-child{ border-left:none; }
+  .hero-strip .item b{
+    display:block; color:#fff; font-family:'Oswald',sans-serif;
+    text-transform:uppercase; font-size:0.95rem; letter-spacing:0.02em; margin-bottom:4px;
+  }
+  @media (max-width: 700px){
+    .hero-strip .wrap{ grid-template-columns: 1fr; }
+    .hero-strip .item{ border-left:none; border-top:1px solid rgba(255,255,255,0.14); }
+    .hero-strip .item:first-child{ border-top:none; }
+  }
+  @media (max-width: 600px){
+    .hero-inner{ padding: 40px 20px 56px; }
+  }
+
+  /* ---------- Riveted seam divider (between dark & light sections) ---------- */
+  .seam{
+    height: 17px;
+    background: var(--steel);
+    background-image: radial-gradient(circle at center, #dfe2e4 0 3px, rgba(0,0,0,0.18) 3.4px 3.6px, transparent 4px);
+    background-repeat: repeat-x;
+    background-position: 22px center;
+    background-size: 42px 100%;
+    border-top: 1px solid rgba(255,255,255,0.35);
+    border-bottom: 2px solid rgba(0,0,0,0.4);
+    box-shadow: inset 0 3px 6px rgba(0,0,0,0.25);
+  }
+
+  /* ---------- Section shell ---------- */
+  section{ padding: 84px 0; position:relative; }
+  section[id]{ scroll-margin-top: 100px; }
+  .section-head{
+    max-width: 640px;
+    margin-bottom: 46px;
+  }
+  .section-head .eyebrow{ color: var(--orange-deep); }
+  .section-head .eyebrow::before{ background: var(--orange-deep); }
+  .section-head h2{
+    font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+    color: var(--navy);
+  }
+  .section-head p{
+    margin-top: 14px;
+    color: var(--muted-copy);
+    font-size: 1.05rem;
+    max-width: 55ch;
+  }
+
+  /* ---------- Om os ---------- */
+  .om-grid{
+    display:grid; grid-template-columns: 1.1fr 0.9fr;
+    gap: 56px; align-items:center;
+  }
+  .om-text p{ font-size: 1.08rem; color:var(--body-copy); margin: 0 0 16px; }
+  .om-text p:last-child{ margin-bottom:0; }
+  .om-photo{ position:relative; }
+  .plate{
+    position:relative;
+    background: var(--navy);
+    border: 8px solid var(--navy);
+    border-bottom: none;
+  }
+  .plate-photo{ overflow:hidden; }
+  .plate-photo img{ display:block; width:100%; height:auto; opacity:0.94; }
+  .bolt{
+    position:absolute; width:10px; height:10px; border-radius:50%;
+    background: radial-gradient(circle at 35% 30%, #d8dcdf, var(--steel) 70%);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+  }
+  .plate .bolt, .gallery-frame .bolt{ z-index:2; }
+  .plate .bolt.tl, .gallery-frame .bolt.tl{ top:-5px; left:-5px; }
+  .plate .bolt.tr, .gallery-frame .bolt.tr{ top:-5px; right:-5px; }
+  .plate .bolt.bl, .gallery-frame .bolt.bl{ bottom:-5px; left:-5px; }
+  .plate .bolt.br, .gallery-frame .bolt.br{ bottom:-5px; right:-5px; }
+  .plate-caption{
+    padding: 12px 16px;
+    background: var(--navy-deep);
+    color: #b9c4cd;
+    font-family:'IBM Plex Mono',monospace;
+    font-size: 0.82rem;
+    border-top: 2px solid var(--orange);
+  }
+
+  @media (max-width: 860px){
+    .om-grid{ grid-template-columns: 1fr; }
+    .om-photo{ order:-1; }
+  }
+
+  /* ---------- Services ---------- */
+  .services-section{ background: var(--concrete-2); }
+  .services-grid{
+    display:grid; grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+  .svc-card{
+    position:relative;
+    background:var(--surface);
+    border: 1px solid var(--border-subtle);
+    padding: 30px 26px 26px;
+    box-shadow: var(--shadow-soft);
+  }
+  .svc-num{
+    font-family:'IBM Plex Mono',monospace;
+    color: var(--orange-deep);
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+  }
+  .svc-card h3{
+    color: var(--navy); font-size: 1.35rem; margin: 10px 0 12px;
+  }
+  .svc-card p{ color:var(--muted-copy); margin:0; font-size: 0.98rem; }
+  .svc-icon{
+    width: 46px; height:46px; margin-bottom: 6px;
+    color: var(--orange);
+  }
+  .svc-icon svg{ width:100%; height:100%; }
+
+  .mobile-callout{
+    margin-top: 22px;
+    background: var(--navy);
+    color:#fff;
+    padding: 26px 30px;
+    display:flex; align-items:center; justify-content:space-between; gap:24px;
+    flex-wrap: wrap;
+    border-left: 5px solid var(--orange);
+  }
+  .mobile-callout h3{ color:#fff; font-size:1.15rem; margin-bottom:6px; }
+  .mobile-callout p{ margin:0; color:#c9d4dc; font-size:0.98rem; max-width:52ch; }
+
+  @media (max-width: 900px){
+    .services-grid{ grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px){
+    .services-grid{ grid-template-columns: 1fr; }
+  }
+
+  /* ---------- Gallery ---------- */
+  .gallery-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  .gallery-item{
+    cursor: zoom-in;
+  }
+  .gallery-frame{
+    position:relative;
+    background: var(--navy);
+    border: 8px solid var(--navy);
+    border-bottom: none;
+  }
+  .gallery-photo{
+    position:relative;
+    overflow:hidden;
+  }
+  .gallery-item img{
+    width:100%; height: 260px; object-fit: cover;
+    display:block;
+    transition: transform 0.35s ease;
+  }
+  .gallery-item:hover img{ transform: scale(1.05); }
+  .gallery-cap{
+    padding: 12px 14px;
+    background: var(--navy-deep);
+    color:#e9eef2;
+    font-family:'IBM Plex Mono',monospace;
+    font-size: 0.82rem;
+    border-top: 2px solid var(--orange);
+  }
+  @media (max-width: 900px){
+    .gallery-grid{ grid-template-columns: repeat(2,1fr); }
+  }
+  @media (max-width: 560px){
+    .gallery-grid{ grid-template-columns: 1fr; }
+  }
+
+  /* Lightbox */
+  .lightbox{
+    position:fixed; inset:0; background: rgba(8,20,32,0.92);
+    display:none; align-items:center; justify-content:center;
+    z-index: 100; padding: 30px;
+  }
+  .lightbox.open{ display:flex; }
+  .lightbox img{ max-width: 92vw; max-height: 84vh; border: 3px solid var(--orange); }
+  .lightbox-close{
+    position:absolute; top:22px; right:26px;
+    background: var(--orange); color:#fff; border:none;
+    width:44px; height:44px; font-size:1.4rem; cursor:pointer;
+    border-radius: var(--radius);
+  }
+  .lightbox-cap{
+    position:absolute; bottom:26px; left:50%; transform:translateX(-50%);
+    color:#dfe6ec; font-family:'IBM Plex Mono',monospace; font-size:0.9rem;
+  }
+
+  /* ---------- Contact ---------- */
+  .contact-section{
+    position:relative;
+    background: var(--navy-deep);
+    color:#fff;
+    overflow:hidden;
+  }
+  .contact-grid{
+    display:grid; grid-template-columns: 1fr 1fr;
+    gap: 40px; align-items:start;
+    position:relative; z-index:2;
+  }
+  .contact-section .section-head h2{ color:#fff; }
+  .contact-section .section-head p{ color:#b9c4cd; }
+  .contact-section .eyebrow{ color: var(--orange); }
+  .contact-section .eyebrow::before{ background: var(--orange); }
+
+  .nameplate{
+    position:relative;
+    background: var(--navy);
+    border: 1px solid rgba(255,255,255,0.18);
+    padding: 34px 32px;
+  }
+  .nameplate h3{
+    color:#fff; font-size:1rem; letter-spacing:0.12em;
+    border-bottom: 1px solid rgba(255,255,255,0.18);
+    padding-bottom: 14px; margin-bottom: 20px;
+  }
+  .np-row{
+    display:flex; gap:14px; align-items:flex-start;
+    padding: 12px 0;
+    border-bottom: 1px dashed rgba(255,255,255,0.12);
+  }
+  .np-row:last-child{ border-bottom:none; }
+  .np-label{
+    font-family:'IBM Plex Mono',monospace;
+    color: var(--orange);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    width: 92px; flex-shrink:0; padding-top:2px;
+  }
+  .np-val{ font-size: 1.02rem; color:#e9eef2; }
+  .np-val a{ color:#fff; text-decoration:none; border-bottom:1px solid rgba(255,255,255,0.4); }
+  .np-val a:hover{ border-color: var(--orange); color: var(--orange); }
+
+  .contact-form{
+    background:var(--surface); color: var(--ink);
+    padding: 34px 32px;
+    border-top: 5px solid var(--orange);
+    box-shadow: var(--shadow-soft);
+  }
+  .contact-form h3{ font-size:1rem; letter-spacing:0.1em; margin-bottom:18px; color: var(--navy); }
+  .field{ margin-bottom:16px; }
+  .field label{
+    display:block; font-family:'IBM Plex Mono',monospace; font-size:0.78rem;
+    letter-spacing:0.06em; color: var(--muted-copy); margin-bottom:6px; text-transform:uppercase;
+  }
+  .field input, .field textarea{
+    width:100%; padding: 12px 13px;
+    border:1px solid var(--border-input); background: var(--field-bg);
+    font-family:'Work Sans',sans-serif; font-size:1rem; color: var(--ink);
+    border-radius: var(--radius);
+  }
+  .field textarea{ resize: vertical; min-height: 100px; }
+  .field input:focus, .field textarea:focus{ outline:2px solid var(--orange); outline-offset:1px; }
+  .form-note{ font-size:0.86rem; color: var(--muted-copy); margin-top: 10px; }
+
+  @media (max-width: 860px){
+    .contact-grid{ grid-template-columns: 1fr; }
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    background: var(--navy-deep); color:var(--footer-copy);
+    padding: 30px 0;
+    font-size: 0.88rem;
+  }
+  .foot-row{
+    display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;
+  }
+  footer a{ color:#c9d4dc; text-decoration:none; }
+  footer a:hover{ color: var(--orange); }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="nav-row">
+    <a href="#top" class="brand">
+      <img src="images/logo.png" alt="Fogh Service logo" width="180" height="98" decoding="async" fetchpriority="high">
+      <span class="brand-text">Fogh Service</span>
+    <a class="nav-call" href="tel:+4522920992">
+      📞 <span class="txt">Ring:</span> 22 92 09 92
+    </a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hex-pattern" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <div class="eyebrow">Mobil maskinreparatør · Ribe</div>
+      <h1>Hydraulik, smedeopgaver &amp; <span class="accent">maskinreparation</span></h1>
+      <p class="hero-sub">Fogh Service reparerer landbrugs- og entreprenørmaskiner ude hos dig. Ring, så finder vi ud af, hvad der skal til.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="tel:+4522920992">Ring nu — 22 92 09 92</a>
+        <a class="btn btn-outline" href="mailto:foghservice@gmail.com">Send en mail</a>
+      </div>
+    </div>
+    <div class="hero-strip">
+      <div class="wrap">
+        <div class="item"><b>Hydraulik</b>Cylindre, slanger og aggregater</div>
+        <div class="item"><b>Smedeopgaver</b>Svejsning og reparation i stål</div>
+        <div class="item"><b>Maskinservice</b>Landbrug &amp; entreprenør</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="seam" aria-hidden="true"></div>
+
+  <!-- OM OS -->
+  <section id="om-os">
+    <div class="wrap om-grid">
+      <div class="om-text">
+        <div class="section-head" style="margin-bottom:24px;">
+          <div class="eyebrow">Om Fogh service</div>
+          <h2>Vi holder maskinerne kørende</h2>
+        </div>
+        <p>Fogh Service er mobil maskinreparatør, baseret i Ribe, og arbejder med hydraulik, smedeopgaver og reparation af landbrugs- og entreprenørmaskiner..</p>
+        <p>Jeg rykker gerne ud med servicebilen, når maskinen ikke selv kan komme til mig — om det er på marken, på pladsen eller i en lade. Har du et akut nedbrud eller et stykke arbejde, der skal planlægges, så ring, og jeg finder en løsning..</p>
+      </div>
+      <div class="om-photo">
+        <div class="plate">
+          <span class="bolt tl"></span><span class="bolt tr"></span><span class="bolt bl"></span><span class="bolt br"></span>
+          <div class="plate-photo">
+            <img src="images/work-warehouse.webp" width="1100" height="1466" alt="Fogh Service værkstedsbil parkeret i lade sammen med lift-maskine" loading="eager" decoding="async">
+          </div>
+        </div>
+        <div class="plate-caption">VÆRKSTEDSBIL / MOBIL SERVICE</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="services-section">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Det laver vi</div>
+        <h2>Ydelser</h2>
+        <p>Tre kerneområder — og jeg kommer ud til dig, hvis maskinen ikke kan flyttes.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="svc-card">
+          <div class="svc-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="6" y="20" width="18" height="10" rx="1"></rect>
+              <line x1="24" y1="25" x2="34" y2="25"></line>
+              <rect x="34" y="17" width="8" height="16" rx="1"></rect>
+              <line x1="10" y1="20" x2="10" y2="12"></line>
+              <line x1="20" y1="20" x2="20" y2="12"></line>
+            </svg>
+          </div>
+          <div class="svc-num">01 / HYDRAULIK</div>
+          <h3>Hydraulik</h3>
+          <p>Reparation af cylindre, slanger og hydraulikaggregater på traktorer, gravemaskiner, hjullæssere og andet materiel.</p>
+        </div>
+
+        <div class="svc-card">
+          <div class="svc-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 40 L26 22"></path>
+              <path d="M22 18 L30 26 L40 16 L32 8 Z"></path>
+              <circle cx="10" cy="38" r="3"></circle>
+            </svg>
+          </div>
+          <div class="svc-num">02 / SMEDEOPGAVER</div>
+          <h3>Smedeopgaver</h3>
+          <p>Svejsning, reparation og forstærkning af stålkonstruktioner, akselhuse og andet, der er slidt eller brækket.</p>
+        </div>
+
+        <div class="svc-card">
+          <div class="svc-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="34" r="6"></circle>
+              <circle cx="36" cy="34" r="6"></circle>
+              <path d="M6 26 L14 10 H30 L40 26"></path>
+              <path d="M18 26 H32"></path>
+            </svg>
+          </div>
+          <div class="svc-num">03 / MASKINSERVICE</div>
+          <h3>Landbrug &amp; entreprenør</h3>
+          <p>Service og reparation af traktorer, gummigede, gravemaskiner og andet landbrugs- og entreprenørmateriel.</p>
+        </div>
+      </div>
+
+      <div class="mobile-callout">
+        <div>
+          <h3>Kan maskinen ikke flyttes?</h3>
+          <p>Jeg tager ud i den udstyrede værkstedsbil og reparerer på stedet — i marken, på pladsen eller i laden.</p>
+        </div>
+        <a class="btn btn-primary" href="tel:+4522920992">Ring og lav en aftale</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARBEJDE / GALLERY -->
+  <section id="arbejde">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Fra det mobileværksted</div>
+        <h2>Vores arbejde</h2>
+        <p>Et udpluk af opgaver — set direkte fra det mobileværksted.</p>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item" tabindex="0" role="button" aria-label="Se stort billede:" data-full="images/work-axle.webp" data-cap="Reparation af forakslen på en traktor">
+          <div class="gallery-frame">
+            <span class="bolt tl"></span><span class="bolt tr"></span><span class="bolt bl"></span><span class="bolt br"></span>
+            <div class="gallery-photo">
+              <img src="images/work-axle.webp" width="900" height="1200" alt="" loading="lazy" decoding="async">
+            </div>
+          </div>
+          <div class="gallery-cap">Forakselreparation, traktor</div>
+        </div>
+        <div class="gallery-item" tabindex="0" role="button" aria-label="Se stort billede: Renoveret gearkasse" data-full="images/work-gearbox.webp" data-cap="">
+          <div class="gallery-frame">
+            <span class="bolt tl"></span><span class="bolt tr"></span><span class="bolt bl"></span><span class="bolt br"></span>
+            <div class="gallery-photo">
+              <img src="images/work-gearbox.webp" width="720" height="960" alt="" loading="lazy" decoding="async">
+            </div>
+          </div>
+          <div class="gallery-cap">Reperation af PTO-aksel</div>
+        </div>
+        <div class="gallery-item" tabindex="0" role="button" aria-label="Se stort billede: " data-full="images/work-loader-van.webp" data-cap="">
+          <div class="gallery-frame">
+            <span class="bolt tl"></span><span class="bolt tr"></span><span class="bolt bl"></span><span class="bolt br"></span>
+            <div class="gallery-photo">
+              <img src="images/work-loader-van.webp" width="900" height="900" alt="" loading="lazy" decoding="async">
+            </div>
+          </div>
+          <div class="gallery-cap">Service, Volvo gummiged</div>
+        </div>
+        <div class="gallery-item" tabindex="0" role="button" aria-label="Se stort billede:" data-full="images/work-van-excavator.webp" data-cap="">
+          <div class="gallery-frame">
+            <span class="bolt tl"></span><span class="bolt tr"></span><span class="bolt bl"></span><span class="bolt br"></span>
+            <div class="gallery-photo">
+              <img src="images/work-van-excavator.webp" width="900" height="1200" alt="" loading="lazy" decoding="async">
+            </div>
+          </div>
+          <div class="gallery-cap">Service, Liebherr gravemaskine</div>
+        </div>
+        <div class="gallery-item" tabindex="0" role="button" aria-label="Se stort billede: """ data-full="images/work-tractor-8r.webp" data-cap="">
+          <div class="gallery-frame">
+            <span class="bolt tl"></span><span class="bolt tr"></span><span class="bolt bl"></span><span class="bolt br"></span>
+            <div class="gallery-photo">
+              <img src="images/work-tractor-8r.webp" width="900" height="1200" alt="" loading="lazy" decoding="async">
+            </div>
+          </div>
+          <div class="gallery-cap">Montering af lys, John Deere 8R</div>
+        </div>
+        <div class="gallery-item" tabindex="0" role="button" aria-label="Se stort billede: " data-full="images/work-cattletruck.webp" data-cap="">
+          <div class="gallery-frame">
+            <span class="bolt tl"></span><span class="bolt tr"></span><span class="bolt bl"></span><span class="bolt br"></span>
+            <div class="gallery-photo">
+              <img src="images/work-cattletruck.webp" width="900" height="1200" alt="" loading="lazy" decoding="async">
+          </div>
+          <div class="gallery-cap">Reparation, kreaturvogn</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="seam" aria-hidden="true"></div>
+
+  <!-- CONTACT -->
+  <section id="kontakt" class="contact-section">
+    <div class="hex-pattern" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Kontakt</div>
+        <h2>Ring, mail eller skriv</h2>
+        <p>Fortæl kort hvad problemet er, så vender jeg tilbage hurtigst muligt.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="nameplate">
+          <h3>KONTAKTOPLYSNINGER</h3>
+          <div class="np-row">
+            <div class="np-label">TELEFON</div>
+            <div class="np-val"><a href="tel:+4522920992">22 92 09 92</a></div>
+          </div>
+          <div class="np-row">
+            <div class="np-label">EMAIL</div>
+            <div class="np-val"><a href="mailto:foghservice@gmail.com">foghservice@gmail.com</a></div>
+          </div>
+          <div class="np-row">
+            <div class="np-label">ADRESSE</div>
+            <div class="np-val"><a href="https://www.google.com/maps/search/?api=1&query=Hillerupn%C3%B8rrevej+4%2C+6760+Ribe" target="_blank" rel="noopener">Hillerupnørrevej 4<br>6760 Ribe</a></div>
+          </div>
+          <div class="np-row">
+            <div class="np-label">ÅBNINGSTID</div>
+            <div class="np-val">Ring og aftal tid — vi er ofte ude hos kunder</div>
+          </div>
+        </div>
+
+        <form class="contact-form" onsubmit="return false;">
+          <h3>SKRIV EN BESKED</h3>
+          <div class="field">
+            <label for="navn">Navn</label>
+            <input id="navn" name="navn" type="text" required>
+          </div>
+          <div class="field">
+            <label for="tlf">Telefon</label>
+            <input id="tlf" name="tlf" type="tel" required>
+          </div>
+          <div class="field">
+            <label for="besked">Hvad drejer det sig om?</label>
+            <textarea id="besked" name="besked" required></textarea>
+          </div>
+          <a class="btn btn-primary" href="mailto:foghservice@gmail.com" style="width:100%; justify-content:center;">Send besked</a>
+          <p class="form-note">Knappen åbner din mail-app med foghservice@gmail.com som modtager.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-row">
+    <div>© <span id="year"></span> Fogh Service · <a href="https://www.google.com/maps/search/?api=1&query=Hillerupn%C3%B8rrevej+4%2C+6760+Ribe" target="_blank" rel="noopener">Hillerupnørrevej 4, 6760 Ribe</a></div>
+    <div><a href="tel:+4522920992">22 92 09 92</a> · <a href="mailto:foghservice@gmail.com">foghservice@gmail.com</a></div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Forstørret billede">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Luk billede">×</button>
+  <img id="lightboxImg" src="" alt="">
+  <div class="lightbox-cap" id="lightboxCap"></div>
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxCap = document.getElementById('lightboxCap');
+
+  function openLightbox(src, cap, altText){
+    lightboxImg.src = src;
+    lightboxImg.alt = altText || '';
+    lightboxCap.textContent = cap || '';
+    lightbox.classList.add('open');
+  }
+  function closeLightbox(){
+    lightbox.classList.remove('open');
+    lightboxImg.src = '';
+  }
+
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const img = item.querySelector('img');
+      openLightbox(item.dataset.full, item.dataset.cap, img.alt);
+    });
+    item.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        const img = item.querySelector('img');
+        openLightbox(item.dataset.full, item.dataset.cap, img.alt);
+      }
+    });
+  });
+
+  document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeLightbox(); });
+</script>
+
+</body>
+</html>
